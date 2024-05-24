@@ -36,7 +36,7 @@ jobs:
         - name: Image scan
           run: trivy image pnaidu104/tic-tac-toe:latest > trivyimage.txt
 
-  deploy:
+deploy:
     needs: build-analyze-scan
     runs-on: [self-hosted]
     steps:
