@@ -10,14 +10,17 @@ jobs:
     name: Build
     runs-on: [self-hosted]
     steps:
+      - name: Pre-cleanup
+        run: sudo rm -rf /home/ubuntu/actions-runner/_work/TIC-TAC-TOE/TIC-TAC-TOE/.scannerwork
+
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-          
+          fetch-depth: 0  # Shallow clones should be disabled for better relevancy of analysis
+
       - name: Fix permissions
-        run: sudo chmod -R 777 /home/ubuntu/actions-runner/_work/TIC-TAC-TOE/TIC-TAC-TOE/.scannerwork
-          
+        run: sudo chmod -R 755 /home/ubuntu/actions-runner/_work/TIC-TAC-TOE/TIC-TAC-TOE
+
       - name: Deploy to container
         run: |
           docker stop game
