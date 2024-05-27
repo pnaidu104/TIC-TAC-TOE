@@ -31,4 +31,7 @@ jobs:
           docker push pnaidu104/tic-tac-toe:latest
         env:
           DOCKER_CLI_ACI: 1
+      - name: Image scan
+        run: trivy image sevenajay/tic-atc-toe:latest > imagereport.txt
+        
         
